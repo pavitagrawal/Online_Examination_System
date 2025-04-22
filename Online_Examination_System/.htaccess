@@ -1,0 +1,21 @@
+# Enable URL rewriting
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /ONLINE_EXAMINATION_SYSTEM/
+    
+    # Handle requests for non-existent files or directories
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php [L]
+    
+    # Custom error document
+    ErrorDocument 404 /ONLINE_EXAMINATION_SYSTEM/404.php
+</IfModule>
+
+# PHP settings
+<IfModule mod_php7.c>
+    php_flag display_errors On
+    php_value upload_max_filesize 10M
+    php_value post_max_size 20M
+    php_value max_execution_time 300
+</IfModule>
